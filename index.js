@@ -11,7 +11,7 @@ function getSortChunksArray(chunk) {
         // Если чанк дошел до конца, выходим из цикла
         if (index < 0) break;
         const line = previousChunk.slice(0, index + 1);
-        //Если строка не пустая добавляем его в массив
+        //Если строка не пустая, добавляем его в массив
         if (line.trim().length) {
             chunks.push(line);
         }
@@ -43,7 +43,7 @@ try {
         const sortChunks = getSortChunksArray(chunk);
         /*
          Извлекаем массив и записываем в новый файл отсортированные данные
-         Для обработки больших данных, самый быстрый вариант перебора массива является массив for
+         Для обработки больших данных, самый быстрый вариант перебора массива является цикл for
          */
         for (let i = 0; i < sortChunks.length; i++) {
             writeableStream.write(sortChunks[i]);
