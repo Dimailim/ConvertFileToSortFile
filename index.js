@@ -3,11 +3,11 @@ import fs from 'fs';
 function getSortChunksArray(chunk) {
     let previousChunk = '';
     let startSearch = previousChunk.length;
-    let chunks = [];
+    const chunks = [];
     previousChunk += chunk;
 
     while (true) {
-        const  index = previousChunk.indexOf('\n', startSearch);
+        const index = previousChunk.indexOf('\n', startSearch);
         // Если чанк дошел до конца, выходим из цикла
         if (index < 0) break;
         const line = previousChunk.slice(0, index + 1);
@@ -40,7 +40,7 @@ try {
     let writeableStream = fs.createWriteStream('sortFile.txt', 'utf-8');
     readableSteam.on('data', function (chunk) {
         // Получаем массив из отсортированных данных
-        let sortChunks = getSortChunksArray(chunk);
+        const sortChunks = getSortChunksArray(chunk);
         /*
          Извлекаем массив и записываем в новый файл отсортированные данные
          Для обработки больших данных, самый быстрый вариант перебора массива является массив for
